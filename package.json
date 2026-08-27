@@ -1,0 +1,28 @@
+{
+  "name": "github-pages-docs-test",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Jekyll site with a TypeScript/React island bundle and SCSS.",
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "sass src/styles/main.scss assets/css/main.css --style=compressed --no-source-map",
+    "build:js": "esbuild src/main.tsx --bundle --minify --sourcemap --target=es2020 --format=iife --outfile=assets/js/bundle.js",
+    "dev": "concurrently -n css,js -c magenta,yellow \"npm:dev:css\" \"npm:dev:js\"",
+    "dev:css": "sass src/styles/main.scss assets/css/main.css --watch",
+    "dev:js": "esbuild src/main.tsx --bundle --sourcemap --target=es2020 --format=iife --outfile=assets/js/bundle.js --watch",
+    "typecheck": "tsc --noEmit",
+    "serve": "bundle exec jekyll serve --livereload"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "concurrently": "^9.1.0",
+    "esbuild": "^0.25.0",
+    "sass": "^1.83.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,29 @@
+@use "variables" as *;
+
+.site-header,
+.site-main,
+.site-footer {
+  max-width: $measure;
+  margin: 0 auto;
+  padding: 0 $space;
+}
+
+.site-header {
+  padding-top: $space * 2;
+  padding-bottom: $space;
+
+  &__title {
+    font-weight: 600;
+    text-decoration: none;
+    color: $colour-text;
+  }
+}
+
+.site-footer {
+  margin-top: $space * 3;
+  padding-top: $space;
+  padding-bottom: $space * 2;
+  border-top: 1px solid $colour-border;
+  color: $colour-muted;
+  font-size: 0.875rem;
+}

@@ -1,0 +1,32 @@
+title: GitHub Pages Docs Test
+description: Barebones Jekyll + TypeScript/React + SCSS site.
+url: "https://alexcowling.github.io"
+
+# Project page, so the site is served from /github-pages-docs-test.
+# Set to "" if this ever moves to a user/organisation page or a custom domain.
+baseurl: "/github-pages-docs-test"
+
+plugins:
+  - jekyll-seo-tag
+
+# Styles are compiled by dart-sass via npm, not by Jekyll's Sass converter.
+# Jekyll only copies the finished assets/ directory into _site.
+
+# Source files that must not be copied into the built site.
+exclude:
+  - .github/
+  - src/
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - tsconfig.json
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

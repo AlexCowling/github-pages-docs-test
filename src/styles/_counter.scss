@@ -1,0 +1,36 @@
+@use "variables" as *;
+
+.counter {
+  border: 1px solid $colour-border;
+  border-radius: $radius;
+  background: $colour-surface;
+  padding: $space;
+  margin: $space * 1.5 0;
+
+  &__heading {
+    margin: 0 0 $space * 0.5;
+    font-size: 1rem;
+  }
+
+  &__value {
+    font-family: $font-mono;
+    font-size: 1.5rem;
+    margin: 0 0 $space * 0.5;
+  }
+
+  &__button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid $colour-accent;
+    background: $colour-accent;
+    color: #fff;
+    border-radius: $radius;
+    padding: 0.35rem 0.9rem;
+
+    & + & {
+      margin-left: 0.5rem;
+      background: transparent;
+      color: $colour-accent;
+    }
+  }
+}

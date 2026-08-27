@@ -1,0 +1,26 @@
+@use "variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-stack;
+  line-height: 1.6;
+  color: $colour-text;
+}
+
+a {
+  color: $colour-accent;
+}
+
+code {
+  font-family: $font-mono;
+  font-size: 0.9em;
+  background: $colour-surface;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
