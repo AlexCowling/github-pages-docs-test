@@ -1,26 +1,138 @@
-@use "variables" as *;
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
-  font-family: $font-stack;
-  line-height: 1.6;
-  color: $colour-text;
+  background: var(--ti-color-surface-page);
+  color: var(--ti-color-text-primary);
+  font-family: var(--ti-font-family-sans);
+  font-size: var(--ti-font-size-md);
+  line-height: var(--ti-line-height-normal);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: var(--ti-space-2xl) 0 var(--ti-space-sm);
+  line-height: var(--ti-line-height-tight);
+  letter-spacing: var(--ti-letter-spacing-tight);
+}
+
+h1 {
+  margin-block-start: 0;
+  font-size: var(--ti-font-size-3xl);
+}
+
+h2 {
+  font-size: var(--ti-font-size-2xl);
+}
+
+h3 {
+  font-size: var(--ti-font-size-xl);
+}
+
+h4 {
+  font-size: var(--ti-font-size-lg);
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 var(--ti-space-lg);
+}
+
+li + li {
+  margin-block-start: var(--ti-space-2xs);
 }
 
 a {
-  color: $colour-accent;
+  color: var(--ti-color-accent-default);
+  text-underline-offset: 0.15em;
+
+  &:hover {
+    color: var(--ti-color-accent-hover);
+  }
+
+  &:focus-visible {
+    outline: var(--ti-border-width-thick) solid var(--ti-color-focus-ring);
+    outline-offset: var(--ti-border-width-medium);
+    border-radius: var(--ti-radius-sm);
+  }
 }
 
 code {
-  font-family: $font-mono;
-  font-size: 0.9em;
-  background: $colour-surface;
   padding: 0.1em 0.3em;
-  border-radius: 3px;
+  border-radius: var(--ti-radius-sm);
+  background: var(--ti-color-surface-sunken);
+  font-family: var(--ti-font-family-mono);
+  font-size: 0.9em;
+}
+
+pre {
+  margin: 0 0 var(--ti-space-lg);
+  padding: var(--ti-space-lg);
+  overflow-x: auto;
+  border: var(--ti-border-width-thin) solid var(--ti-color-border-subtle);
+  border-radius: var(--ti-radius-lg);
+  background: var(--ti-color-surface-sunken);
+  font-size: var(--ti-font-size-sm);
+  line-height: var(--ti-line-height-normal);
+
+  code {
+    padding: 0;
+    background: none;
+    font-size: inherit;
+  }
+}
+
+table {
+  inline-size: 100%;
+  margin: 0 0 var(--ti-space-lg);
+  border-collapse: collapse;
+  font-size: var(--ti-font-size-sm);
+}
+
+th,
+td {
+  padding: var(--ti-space-sm) var(--ti-space-md);
+  border-block-end: var(--ti-border-width-thin) solid var(--ti-color-border-subtle);
+  text-align: start;
+  vertical-align: top;
+}
+
+th {
+  font-weight: var(--ti-font-weight-semibold);
+}
+
+/* Wide prop tables must scroll inside their own box rather than pushing the
+   page sideways. */
+.table-scroll {
+  overflow-x: auto;
+  margin: 0 0 var(--ti-space-lg);
+}
+
+hr {
+  margin: var(--ti-space-2xl) 0;
+  border: 0;
+  border-block-start: var(--ti-border-width-thin) solid var(--ti-color-border-subtle);
+}
+
+blockquote {
+  margin: 0 0 var(--ti-space-lg);
+  padding: var(--ti-space-md) var(--ti-space-lg);
+  border-inline-start: var(--ti-border-width-thick) solid var(--ti-color-border-subtle);
+  color: var(--ti-color-text-secondary);
+
+  > :last-child {
+    margin-block-end: 0;
+  }
 }

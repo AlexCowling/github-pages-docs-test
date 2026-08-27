@@ -1,3 +1,8 @@
+// Generated from src/tokens by scripts/build-tokens.mjs. Must come first:
+// everything below resolves through the custom properties it declares.
+@use "generated/tokens";
+
 @use "base";
 @use "layout";
-@use "counter";
+@use "components/field";
+@use "docs/demo";

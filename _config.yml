@@ -1,5 +1,5 @@
-title: GitHub Pages Docs Test
-description: Barebones Jekyll + TypeScript/React + SCSS site.
+title: Titanium Component Library
+description: A token-driven React component library for enterprise products, with validation rules that also run without React.
 url: "https://alexcowling.github.io"
 
 # Project page, so the site is served from /github-pages-docs-test.
@@ -16,6 +16,7 @@ plugins:
 exclude:
   - .github/
   - src/
+  - scripts/
   - node_modules/
   - package.json
   - package-lock.json

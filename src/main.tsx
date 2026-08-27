@@ -1,13 +1,21 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "./App";
+import { DEMOS } from "./docs/registry";
 
-const mountPoints = document.querySelectorAll<HTMLElement>("[data-react-root]");
+const mounts = document.querySelectorAll<HTMLElement>("[data-ti-demo]");
 
-mountPoints.forEach((element) => {
+for (const element of mounts) {
+  const name = element.dataset.tiDemo ?? "";
+  const Demo = DEMOS[name];
+
+  if (!Demo) {
+    console.warn(`Unknown data-ti-demo value: ${name}`);
+    continue;
+  }
+
   createRoot(element).render(
     <StrictMode>
-      <App greeting={element.dataset.greeting ?? "Hello"} />
+      <Demo />
     </StrictMode>,
   );
-});
+}

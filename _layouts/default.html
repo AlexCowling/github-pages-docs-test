@@ -7,16 +7,37 @@
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   </head>
   <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
     <header class="site-header">
-      <a class="site-header__title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <div class="site-header__inner">
+        <a class="site-header__title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <nav class="site-nav" aria-label="Documentation">
+          {%- for item in site.data.navigation -%}
+          <a
+            class="site-nav__link"
+            href="{{ item.url | relative_url }}"
+            {% if page.url == item.url %}aria-current="page"{% endif %}
+            >{{ item.title }}</a
+          >
+          {%- endfor -%}
+        </nav>
+        <div data-ti-demo="theme-toggle"></div>
+      </div>
     </header>
 
-    <main class="site-main">
+    <main class="site-main" id="content">
       {{ content }}
     </main>
 
     <footer class="site-footer">
-      <p>Built with Jekyll. Interactive parts rendered by React.</p>
+      <div class="site-footer__inner">
+        <p>
+          Proof of concept. Colour pairs are verified against WCAG ratios by
+          <code>npm run check:contrast</code>; validation rules by
+          <code>npm test</code>.
+        </p>
+      </div>
     </footer>
 
     <script src="{{ '/assets/js/bundle.js' | relative_url }}" defer></script>

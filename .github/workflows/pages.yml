@@ -27,8 +27,8 @@ jobs:
 
       - run: npm ci
 
-      - name: Type-check
-        run: npm run typecheck
+      - name: Verify types, validation rules and WCAG contrast
+        run: npm run verify
 
       - name: Build assets (SCSS + TypeScript)
         run: npm run build

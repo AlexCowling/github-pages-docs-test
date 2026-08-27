@@ -1,17 +1,25 @@
 {
-  "name": "github-pages-docs-test",
+  "name": "@titanium/ui",
   "version": "0.1.0",
   "private": true,
-  "description": "Jekyll site with a TypeScript/React island bundle and SCSS.",
+  "description": "Enterprise React component library with token-based theming, and validation rules that run without React.",
   "scripts": {
-    "build": "npm run build:css && npm run build:js",
+    "build": "npm run build:tokens && npm run build:css && npm run build:js",
+    "build:tokens": "node scripts/build-tokens.mjs",
     "build:css": "sass src/styles/main.scss assets/css/main.css --style=compressed --no-source-map",
     "build:js": "esbuild src/main.tsx --bundle --minify --sourcemap --target=es2020 --format=iife --outfile=assets/js/bundle.js",
-    "dev": "concurrently -n css,js -c magenta,yellow \"npm:dev:css\" \"npm:dev:js\"",
+    "dev": "npm run build:tokens && concurrently -n css,js -c magenta,yellow \"npm:dev:css\" \"npm:dev:js\"",
     "dev:css": "sass src/styles/main.scss assets/css/main.css --watch",
     "dev:js": "esbuild src/main.tsx --bundle --sourcemap --target=es2020 --format=iife --outfile=assets/js/bundle.js --watch",
     "typecheck": "tsc --noEmit",
+    "test": "node --test scripts/*.test.mjs",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "verify": "npm run typecheck && npm test && npm run check:contrast",
     "serve": "bundle exec jekyll serve --livereload"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "dependencies": {
     "react": "^19.1.0",
