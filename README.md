@@ -71,8 +71,12 @@ npm run serve     # jekyll serve --livereload
 ```
 
 Served at <http://127.0.0.1:4000/github-pages-docs-test/>; the root path 404s because of
-`baseurl`. Editing anything in `src/tokens` needs `npm run build:tokens`, since the
-watchers only follow SCSS and TSX.
+`baseurl`.
+
+`npm run dev` watches all three layers: `src/tokens` regenerates the SCSS partial,
+dart-sass recompiles, esbuild rebundles. It runs with `--kill-others-on-fail`, so if one
+watcher dies the whole loop stops rather than carrying on looking alive with a dead
+watcher in it.
 
 ## Documentation for agents
 
