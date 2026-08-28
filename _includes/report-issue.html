@@ -1,0 +1,39 @@
+{%- comment -%}
+  Renders the issue-reporting block. On a component page, set `component:` in the front
+  matter and the GitHub issue form arrives with the component and the page URL already
+  filled in, so a report cannot arrive without the two things that make it actionable.
+{%- endcomment -%}
+{%- assign repo = site.repository -%}
+{%- assign page_url = site.url | append: site.baseurl | append: page.url | uri_escape -%}
+{%- if page.component -%}
+  {%- assign component = page.component | uri_escape -%}
+  {%- capture bug_url -%}
+https://github.com/{{ repo }}/issues/new?template=component-bug.yml&labels=bug&title=%5B{{ component }}%5D+&component={{ component }}&page={{ page_url }}
+  {%- endcapture -%}
+{%- else -%}
+  {%- capture bug_url -%}
+https://github.com/{{ repo }}/issues/new?template=component-bug.yml&labels=bug&page={{ page_url }}
+  {%- endcapture -%}
+{%- endif -%}
+
+<aside class="report" aria-labelledby="report-heading">
+  <h2 class="report__heading" id="report-heading">Found a problem?</h2>
+  <p class="report__body">
+    Bugs and requests go to GitHub issues. The bug form asks for the component, the
+    version and how to reproduce it, because a report without those three cannot be
+    acted on.
+  </p>
+  <p class="report__actions">
+    <a class="report__link" href="{{ bug_url | strip }}">Report a bug</a>
+    <a
+      class="report__link report__link--secondary"
+      href="https://github.com/{{ repo }}/issues/new?template=component-request.yml&labels=enhancement"
+      >Request a change</a
+    >
+    <a
+      class="report__link report__link--secondary"
+      href="https://github.com/{{ repo }}/issues"
+      >Browse open issues</a
+    >
+  </p>
+</aside>

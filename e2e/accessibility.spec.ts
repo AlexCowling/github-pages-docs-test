@@ -16,6 +16,7 @@ import type { Result } from "axe-core";
 
 const PAGES = [
   { name: "Overview", path: "" },
+  { name: "Components", path: "components/" },
   { name: "Email input", path: "components/email-input/" },
   { name: "Tokens", path: "tokens/" },
 ];

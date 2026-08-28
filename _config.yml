@@ -1,6 +1,7 @@
 title: Design System
 description: A token-driven React component library for enterprise products, with validation rules that also run without React.
 url: "https://alexcowling.github.io"
+repository: AlexCowling/github-pages-docs-test
 
 # Project page, so the site is served from /github-pages-docs-test.
 # Set to "" if this ever moves to a user/organisation page or a custom domain.

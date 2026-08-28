@@ -2,7 +2,8 @@
 layout: default
 title: Email input
 summary: A single email field with configurable validation, ten states, and verified WCAG contrast.
-nav_order: 2
+nav_order: 3
+component: Email input
 permalink: /components/email-input/
 ---
 
@@ -244,3 +245,5 @@ const onSubmit = (event: FormEvent) => {
   submit({ email: result.value });
 };
 ```
+
+{% include report-issue.html %}

@@ -2,7 +2,7 @@
 layout: default
 title: Tokens
 summary: The generated colour, spacing and typography tokens, both themes.
-nav_order: 3
+nav_order: 4
 permalink: /tokens/
 ---
 

@@ -14,10 +14,20 @@
         <a class="site-header__title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
         <nav class="site-nav" aria-label="Documentation">
           {%- for item in site.data.navigation -%}
+          {%- comment -%}
+            "page" for the page itself, "true" for an ancestor of it, so a
+            component page still shows which section it belongs to.
+          {%- endcomment -%}
+          {%- assign current = "" -%}
+          {%- if page.url == item.url -%}
+            {%- assign current = "page" -%}
+          {%- elsif item.url != "/" and page.url contains item.url -%}
+            {%- assign current = "true" -%}
+          {%- endif -%}
           <a
             class="site-nav__link"
             href="{{ item.url | relative_url }}"
-            {% if page.url == item.url %}aria-current="page"{% endif %}
+            {% if current != "" %}aria-current="{{ current }}"{% endif %}
             >{{ item.title }}</a
           >
           {%- endfor -%}
@@ -35,7 +45,16 @@
         <p>
           Proof of concept. Colour pairs are verified against WCAG ratios by
           <code>npm run check:contrast</code>; validation rules by
-          <code>npm test</code>.
+          <code>npm test</code>; the rendered pages by axe through Playwright.
+        </p>
+        <p>
+          <a href="https://github.com/{{ site.repository }}/issues/new?template=component-bug.yml&labels=bug"
+            >Report a bug</a
+          >
+          ·
+          <a href="https://github.com/{{ site.repository }}/issues">Open issues</a>
+          ·
+          <a href="https://github.com/{{ site.repository }}">Source</a>
         </p>
       </div>
     </footer>

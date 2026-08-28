@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Component documentation
+    url: https://alexcowling.github.io/github-pages-docs-test/components/
+    about: The documented behaviour, states and props for each component.
+  - name: Token reference
+    url: https://alexcowling.github.io/github-pages-docs-test/tokens/
+    about: Every colour, spacing and typography token, in both themes.

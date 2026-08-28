@@ -1,0 +1,95 @@
+name: Component bug
+description: Something in the design system behaves incorrectly.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: check the component page for the documented behaviour. Several
+        things that look like bugs are deliberate, and the page says so. An empty value
+        passing validation on an optional field is the usual one.
+
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: Which component, or "Tokens" for a palette or spacing problem.
+      placeholder: Email input
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Library version
+      placeholder: 0.1.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: The behaviour you saw, not what you think caused it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How to reproduce
+      description: >
+        Numbered steps, plus the props involved. The playground on the component page
+        generates a snippet from whatever you have set; paste that.
+      placeholder: |
+        1. Render with rules={{ required: true }}
+        2. Focus the field and move away without typing
+        3. The message does not appear
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      multiple: true
+      options:
+        - Behaviour
+        - Accessibility
+        - Visual or theming
+        - TypeScript types
+        - Validation rules
+        - Documentation
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, and assistive technology if relevant
+      placeholder: Chrome 151 on Windows 11, NVDA 2025.1
+    validations:
+      required: true
+
+  - type: input
+    id: page
+    attributes:
+      label: Documentation page
+      description: Filled in automatically when reporting from the documentation site.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked the component page for the documented behaviour.
+          required: true
+        - label: This is reproducible in the playground or a minimal example.
+          required: false

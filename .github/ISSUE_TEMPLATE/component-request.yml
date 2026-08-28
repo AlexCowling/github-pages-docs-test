@@ -1,0 +1,53 @@
+name: Component change or addition
+description: Propose a new component, a new prop, or a change to an existing one.
+labels: [enhancement]
+body:
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: The existing component, or the name you propose for a new one.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: >
+        What you are trying to build and where the library stops you. Describe the
+        problem rather than the API you have in mind; the shape is easier to agree on
+        once the need is clear.
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: What you are doing instead today
+      description: >
+        A local wrapper, a copied component, an overridden class name. This is the
+        strongest evidence that the gap is real.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: products
+    attributes:
+      label: Products that need this
+      multiple: true
+      options:
+        - One product only
+        - Two or more products
+        - Every product
+        - Not sure yet
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: This cannot be solved by overriding tokens on my side.
+          required: true

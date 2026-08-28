@@ -87,8 +87,8 @@ Claims in these pages are checked by scripts in the repository rather than asser
 | Colour pairs meet their WCAG ratio | `npm run check:contrast` | 50 pairs, both themes |
 | Validation rules behave as documented | `npm test` | 16 tests |
 | Types are sound | `npm run typecheck` | no errors |
-| The component behaves in a browser | `npm run test:e2e` | 26 Playwright tests |
-| The rendered DOM has no axe violations | `npm run test:e2e` | 3 pages, 2 themes, A/AA plus 1.4.6 AAA |
+| The component behaves in a browser | `npm run test:e2e` | 30 Playwright tests |
+| The rendered DOM has no axe violations | `npm run test:e2e` | 4 pages, 2 themes, A/AA plus 1.4.6 AAA |
 
 The first three run in CI before the site is built and the fourth runs after it, against
 the built output, so a token edit that breaks contrast or an island that fails to mount
