@@ -42,10 +42,10 @@ Nothing about accessibility is asserted in prose without a script behind it.
 
 | Command | Checks |
 | --- | --- |
-| `npm run check:contrast` | 36 colour pairs against the WCAG ratio each one needs, both themes |
+| `npm run check:contrast` | 50 colour pairs against the WCAG ratio each one needs, both themes |
 | `npm test` | 16 tests over the validation rules |
 | `npm run typecheck` | Types, including that both themes define every semantic token |
-| `npm run test:e2e` | 12 Playwright tests over the built site: island mounting, ARIA wiring, and two pinned regressions |
+| `npm run test:e2e` | 26 Playwright tests over the built site: behaviour, two pinned regressions, and an axe audit of every page in both themes |
 | `npm run verify` | Typecheck, unit tests and contrast together; what CI runs before building |
 
 A token edit that drops a pair below its ratio fails the deploy rather than shipping. The

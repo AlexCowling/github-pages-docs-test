@@ -84,10 +84,11 @@ Claims in these pages are checked by scripts in the repository rather than asser
 
 | Claim | Checked by | Result |
 | --- | --- | --- |
-| Colour pairs meet their WCAG ratio | `npm run check:contrast` | 36 pairs, both themes |
+| Colour pairs meet their WCAG ratio | `npm run check:contrast` | 50 pairs, both themes |
 | Validation rules behave as documented | `npm test` | 16 tests |
 | Types are sound | `npm run typecheck` | no errors |
-| The component behaves in a browser | `npm run test:e2e` | 12 Playwright tests |
+| The component behaves in a browser | `npm run test:e2e` | 26 Playwright tests |
+| The rendered DOM has no axe violations | `npm run test:e2e` | 3 pages, 2 themes, A/AA plus 1.4.6 AAA |
 
 The first three run in CI before the site is built and the fourth runs after it, against
 the built output, so a token edit that breaks contrast or an island that fails to mount
@@ -109,7 +110,8 @@ Repository layout, for an agent asked to change something here:
 - src/styles/components/_field.scss - component styling. Token references only; no
   literal colour, spacing or font values.
 - src/docs/ - documentation-only React. Never ships in the library.
-- e2e/ - Playwright smoke tests. They run against the built _site through
+- e2e/ - Playwright tests. email-input.spec.ts covers behaviour; accessibility.spec.ts
+  runs axe over every page in both themes. They run against the built _site through
   scripts/serve-site.mjs, not a dev server, and need `npx playwright install chromium`
   once. Two of them pin defects found by hand: stale validation after a rules change,
   and Reset not clearing field state.

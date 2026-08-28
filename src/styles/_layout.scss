@@ -36,6 +36,7 @@
   flex-wrap: wrap;
   gap: var(--ds-space-md) var(--ds-space-xl);
   align-items: baseline;
+  justify-content: space-between;
   padding-block: var(--ds-space-lg);
 }
 

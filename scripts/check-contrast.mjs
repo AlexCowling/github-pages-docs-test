@@ -44,7 +44,16 @@ export function contrast(foreground, background) {
 const PAIRS = [
   ["text.primary", "surface.page", 7, "Field value and body copy"],
   ["text.primary", "surface.raised", 7, "Field value on a raised card"],
+  ["text.primary", "surface.sunken", 7, "Body copy on a sunken panel"],
   ["text.secondary", "surface.page", 7, "Label and helper text"],
+  ["text.secondary", "surface.raised", 7, "Helper text on a raised card"],
+  ["text.secondary", "surface.sunken", 7, "Helper text on a sunken panel"],
+  // accent.default is link text, not only an affordance, so it carries the
+  // text threshold on every surface a link can sit on. Checking it at 3:1
+  // as a non-text colour is what let the navigation ship below AAA.
+  ["accent.default", "surface.page", 7, "Link text"],
+  ["accent.default", "surface.raised", 7, "Link text in the header"],
+  ["accent.default", "surface.sunken", 7, "Link text on a sunken panel"],
   ["text.placeholder", "surface.raised", 4.5, "Placeholder text"],
   ["text.onAccent", "accent.default", 4.5, "Text on an accent fill"],
   ["danger.text", "surface.page", 7, "Error message"],
@@ -59,7 +68,8 @@ const PAIRS = [
   ["success.border", "surface.page", 3, "Valid field border"],
   ["focus.ring", "surface.page", 3, "Focus ring against the page"],
   ["focus.ring", "surface.raised", 3, "Focus ring against the field"],
-  ["accent.default", "surface.page", 3, "Interactive affordance"],
+  ["danger.text", "surface.sunken", 7, "Error message on a sunken panel"],
+  ["success.text", "surface.sunken", 7, "Success message on a sunken panel"],
 ];
 
 const read = (theme, path) =>

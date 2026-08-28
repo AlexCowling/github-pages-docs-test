@@ -118,9 +118,9 @@ export const dark: SemanticTokens = {
     disabled: palette.grey[600],
   },
   accent: {
-    default: palette.blue[300],
-    hover: palette.blue[200],
-    active: palette.blue[100],
+    default: palette.blue[200],
+    hover: palette.blue[100],
+    active: palette.blue[50],
     surface: palette.blue[700],
   },
   focus: {

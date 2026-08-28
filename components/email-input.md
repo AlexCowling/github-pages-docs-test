@@ -161,7 +161,7 @@ rules object. Same input, same result, no React needed.
 | 1.4.1 Use of Colour (A) | Every state carries an icon and text, not just a border colour |
 | 1.4.6 Contrast Enhanced (AAA) | Label, value, helper and message text at 7:1 or better |
 | 1.4.11 Non-text Contrast (AA) | Borders and focus ring at 3:1 or better |
-| 2.4.13 Focus Appearance (AAA) | 3px ring, offset 2px, at 7.36:1 against the field |
+| 2.4.13 Focus Appearance (AAA) | 3px ring, offset 2px, at 7.79:1 against the field |
 | 2.5.5 Target Size Enhanced (AAA) | 44px control at `md`, 52px at `lg` |
 | 3.3.1 Error Identification (A) | Error text in a `polite` live region, `aria-invalid` on the input |
 | 3.3.2 Labels or Instructions (A) | `label` is a required prop |
@@ -195,8 +195,10 @@ Accessibility wiring, so an agent editing the component does not undo it:
 - A forced-colors block restates borders and outlines in system keywords. Authored colours
   are discarded in Windows High Contrast; without it the field loses its boundary.
 
-Contrast is not asserted, it is computed: scripts/check-contrast.mjs checks 16 pairs per
-theme against the ratio each one needs and exits non-zero on failure.
+Two layers check this rather than one. scripts/check-contrast.mjs computes 25 token pairs per
+theme against the ratio each one needs. e2e/accessibility.spec.ts then runs axe over the
+rendered DOM of every page in both themes, at WCAG A and AA plus the 1.4.6 AAA contrast
+rule, which is what catches a colour used somewhere the token check never anticipated.
 {% endagent %}
 
 ## Recipes
