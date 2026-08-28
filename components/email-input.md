@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Email input
-summary: A single email field with configurable validation, ten states, and verified WCAG contrast.
+summary: A single email field with configurable validation, sixteen documented states, and verified WCAG contrast.
 nav_order: 3
 component: Email input
 permalink: /components/email-input/

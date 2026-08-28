@@ -2,7 +2,7 @@
 # llms.txt; it does not need a code change.
 - name: Email input
   url: /components/email-input/
-  summary: A single email address with configurable rules, ten states and a ref handle.
+  summary: A single email address with configurable rules, sixteen documented states and a ref handle.
   status: Preview
   since: 0.1.0
   tags: [Form, Validation]
