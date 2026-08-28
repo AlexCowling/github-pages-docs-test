@@ -7,14 +7,14 @@ const { validateEmail, suggestEmailDomain, DEFAULT_RULES } = await bundleModule(
 );
 
 test("accepts a conventional address", () => {
-  const result = validateEmail("ana.silva@titanium.solutions");
+  const result = validateEmail("ana.silva@example.com");
   assert.equal(result.valid, true);
   assert.equal(result.code, null);
 });
 
 test("normalises case and surrounding whitespace by default", () => {
-  const result = validateEmail("  Ana.Silva@Titanium.Solutions  ");
-  assert.equal(result.value, "ana.silva@titanium.solutions");
+  const result = validateEmail("  Ana.Silva@Example.Com  ");
+  assert.equal(result.value, "ana.silva@example.com");
   assert.equal(result.valid, true);
 });
 
@@ -52,9 +52,9 @@ test("enforces the RFC 5321 length limits", () => {
 });
 
 test("allow list and deny list are case insensitive", () => {
-  const rules = { allowedDomains: ["Titanium.Solutions"] };
-  assert.equal(validateEmail("ana@TITANIUM.SOLUTIONS", rules).valid, true);
-  assert.equal(validateEmail("ana@example.com", rules).code, "domainNotAllowed");
+  const rules = { allowedDomains: ["Example.Com"] };
+  assert.equal(validateEmail("ana@EXAMPLE.COM", rules).valid, true);
+  assert.equal(validateEmail("ana@elsewhere.test", rules).code, "domainNotAllowed");
 
   const blocked = { blockedDomains: ["Example.COM"] };
   assert.equal(validateEmail("ana@example.com", blocked).code, "domainBlocked");
@@ -82,8 +82,8 @@ test("messages can be replaced per code for translation", () => {
 });
 
 test("message functions receive the resolved rules", () => {
-  const result = validateEmail("ana@wrong.com", { allowedDomains: ["titanium.solutions"] });
-  assert.match(result.message, /titanium\.solutions/);
+  const result = validateEmail("ana@wrong.com", { allowedDomains: ["example.com"] });
+  assert.match(result.message, /example\.com/);
 });
 
 test("suggests a correction for a near-miss domain", () => {
@@ -93,6 +93,6 @@ test("suggests a correction for a near-miss domain", () => {
 
 test("does not suggest when the domain is already known or is far away", () => {
   assert.equal(suggestEmailDomain("ana@gmail.com", ["gmail.com"]), null);
-  assert.equal(suggestEmailDomain("ana@titanium.solutions", ["gmail.com"]), null);
+  assert.equal(suggestEmailDomain("ana@example.com", ["gmail.com"]), null);
   assert.equal(suggestEmailDomain("no-at-sign", ["gmail.com"]), null);
 });

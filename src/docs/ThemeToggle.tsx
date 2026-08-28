@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 type Choice = "system" | "light" | "dark";
 
-const STORAGE_KEY = "ti-docs-theme";
+const STORAGE_KEY = "ds-docs-theme";
 const NEXT: Record<Choice, Choice> = { system: "light", light: "dark", dark: "system" };
 const LABEL: Record<Choice, string> = {
   system: "Theme: system",
@@ -31,8 +31,8 @@ export function ThemeToggle() {
 
   useEffect(() => {
     const root = document.documentElement;
-    if (choice === "system") delete root.dataset.tiTheme;
-    else root.dataset.tiTheme = choice;
+    if (choice === "system") delete root.dataset.dsTheme;
+    else root.dataset.dsTheme = choice;
     try {
       window.localStorage.setItem(STORAGE_KEY, choice);
     } catch {

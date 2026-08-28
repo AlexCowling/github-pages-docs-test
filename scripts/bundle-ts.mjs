@@ -11,7 +11,7 @@ import { pathToFileURL } from "node:url";
  * other without file extensions.
  */
 export async function bundleModule(entryPoint) {
-  const dir = await mkdtemp(path.join(os.tmpdir(), "ti-bundle-"));
+  const dir = await mkdtemp(path.join(os.tmpdir(), "ds-bundle-"));
   const outfile = path.join(dir, "module.mjs");
 
   await build({

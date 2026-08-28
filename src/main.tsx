@@ -2,14 +2,14 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { DEMOS } from "./docs/registry";
 
-const mounts = document.querySelectorAll<HTMLElement>("[data-ti-demo]");
+const mounts = document.querySelectorAll<HTMLElement>("[data-ds-demo]");
 
 for (const element of mounts) {
-  const name = element.dataset.tiDemo ?? "";
+  const name = element.dataset.dsDemo ?? "";
   const Demo = DEMOS[name];
 
   if (!Demo) {
-    console.warn(`Unknown data-ti-demo value: ${name}`);
+    console.warn(`Unknown data-ds-demo value: ${name}`);
     continue;
   }
 

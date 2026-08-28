@@ -11,4 +11,4 @@ export { light, dark, themes } from "./semantic";
 export type { SemanticTokens, ThemeName } from "./semantic";
 
 /** Prefix for every generated CSS custom property. */
-export const TOKEN_PREFIX = "ti";
+export const TOKEN_PREFIX = "ds";

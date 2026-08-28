@@ -6,7 +6,7 @@ nav_order: 1
 permalink: /
 ---
 
-# Titanium component library
+# Design System
 
 A proof of concept for a shared React component library: one set of tokens, one set of
 components, consumed as a dependency by every digital product in the organisation.
@@ -18,9 +18,9 @@ dependency tree.</p>
 
 | Subpath | Contains | React required |
 | --- | --- | --- |
-| `@titanium/ui` | React components | Yes |
-| `@titanium/ui/tokens` | Colour, spacing, typography | No |
-| `@titanium/ui/validation` | Validation rules and messages | No |
+| `@ds/ui` | React components | Yes |
+| `@ds/ui/tokens` | Colour, spacing, typography | No |
+| `@ds/ui/validation` | Validation rules and messages | No |
 
 That split is the point of the design. When an API rejects an address the browser
 accepted, the two are running different rules. Here they import the same function.
@@ -29,8 +29,8 @@ accepted, the two are running different rules. Here they import the same functio
 
 {% raw %}
 ```tsx
-import { EmailInput } from "@titanium/ui";
-import "@titanium/ui/styles.css";
+import { EmailInput } from "@ds/ui";
+import "@ds/ui/styles.css";
 
 <EmailInput
   label="Work email address"
@@ -43,7 +43,7 @@ import "@titanium/ui/styles.css";
 Server-side, the same rules with no UI dependency:
 
 ```ts
-import { validateEmail } from "@titanium/ui/validation";
+import { validateEmail } from "@ds/ui/validation";
 
 const result = validateEmail(request.body.email, { required: true });
 if (!result.valid) return reply.status(422).send({ error: result.message });
@@ -57,23 +57,23 @@ re-themes by overriding properties, never by overriding component selectors.
 
 ```css
 :root {
-  --ti-color-accent-default: #6b2fa0;
-  --ti-radius-md: 0;
+  --ds-color-accent-default: #6b2fa0;
+  --ds-radius-md: 0;
 }
 ```
 
-Themes follow the operating system by default. Setting `data-ti-theme="dark"` or
+Themes follow the operating system by default. Setting `data-ds-theme="dark"` or
 `"light"` on the root element pins it, which is what the toggle in the header does.
 
 {% agent theming-contract %}
 Theme override contract:
 - All 30 semantic colour tokens are re-declared under three selectors: `:root`,
-  `@media (prefers-color-scheme: dark) :root:not([data-ti-theme="light"])`, and
-  `:root[data-ti-theme="dark"]`.
+  `@media (prefers-color-scheme: dark) :root:not([data-ds-theme="light"])`, and
+  `:root[data-ds-theme="dark"]`.
 - Overriding a token on `:root` alone will be reverted in dark mode. To override for
   both themes, set the property on `:root` AND inside the two dark blocks, or set it on
   a wrapper element that both themes inherit through.
-- Do NOT target `.ti-field__input` or any `.ti-field__*` class from product code. Those
+- Do NOT target `.ds-field__input` or any `.ds-field__*` class from product code. Those
   class names are not part of the public API and change without a major version.
 - The full token set, both themes resolved, is at /assets/tokens/tokens.json.
 {% endagent %}

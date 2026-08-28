@@ -13,7 +13,7 @@ server.
 
 {% raw %}
 ```tsx
-import { EmailInput } from "@titanium/ui";
+import { EmailInput } from "@ds/ui";
 
 <EmailInput
   label="Work email address"
@@ -28,7 +28,7 @@ import { EmailInput } from "@titanium/ui";
 
 Every control below maps to one prop. The snippet updates as you change them.
 
-<div data-ti-demo="playground"></div>
+<div data-ds-demo="playground"></div>
 
 {% agent playground-note %}
 The playground is documentation-only code in src/docs/Playground.tsx. It is not part of
@@ -37,7 +37,7 @@ the library and must not be imported by product code.
 
 ## States
 
-<div data-ti-demo="states"></div>
+<div data-ds-demo="states"></div>
 
 Hover and focus in that gallery are simulated with a documentation-only class, because a
 static page cannot hold a real browser state. Tab into any live field to see the actual
@@ -149,7 +149,7 @@ Validation semantics an agent should not guess at:
 - The component does NOT set maxLength on the input element. Truncating a paste silently
   is worse than reporting it, so over-length values are reported through the tooLong code.
 
-Server-side parity: import validateEmail from @titanium/ui/validation and pass the same
+Server-side parity: import validateEmail from @ds/ui/validation and pass the same
 rules object. Same input, same result, no React needed.
 {% endagent %}
 

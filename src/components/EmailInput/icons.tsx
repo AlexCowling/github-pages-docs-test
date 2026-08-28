@@ -17,7 +17,7 @@ const base = {
 } as const;
 
 export const ErrorIcon = () => (
-  <svg {...base} className="ti-field__icon">
+  <svg {...base} className="ds-field__icon">
     <circle cx="10" cy="10" r="7.5" />
     <path d="M10 6v4.5" />
     <path d="M10 13.6v.01" />
@@ -25,21 +25,21 @@ export const ErrorIcon = () => (
 );
 
 export const SuccessIcon = () => (
-  <svg {...base} className="ti-field__icon">
+  <svg {...base} className="ds-field__icon">
     <circle cx="10" cy="10" r="7.5" />
     <path d="M6.5 10.2l2.4 2.4 4.6-5" />
   </svg>
 );
 
 export const ClearIcon = () => (
-  <svg {...base} className="ti-field__icon">
+  <svg {...base} className="ds-field__icon">
     <path d="M5.5 5.5l9 9" />
     <path d="M14.5 5.5l-9 9" />
   </svg>
 );
 
 export const BusyIcon = () => (
-  <svg {...base} className="ti-field__icon ti-field__icon--busy">
+  <svg {...base} className="ds-field__icon ds-field__icon--busy">
     <circle cx="10" cy="10" r="7.5" opacity="0.25" />
     <path d="M17.5 10a7.5 7.5 0 0 0-7.5-7.5" />
   </svg>

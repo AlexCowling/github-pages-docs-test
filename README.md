@@ -1,4 +1,4 @@
-# Titanium component library
+# Design System
 
 Proof of concept for a shared React component library: token-driven theming, one email
 input built to production standard, and documentation that serves developers and agents

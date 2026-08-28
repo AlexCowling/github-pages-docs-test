@@ -47,7 +47,7 @@ const CASES: StateCase[] = [
   {
     name: "Filled",
     note: "A value present but not yet validated.",
-    render: () => <EmailInput label={label} defaultValue="ana.silva@titanium.solutions" />,
+    render: () => <EmailInput label={label} defaultValue="ana.silva@example.com" />,
   },
   {
     name: "Hover",
@@ -72,7 +72,7 @@ const CASES: StateCase[] = [
     render: () => (
       <EmailInput
         label={label}
-        defaultValue="ana.silva@titanium.solutions"
+        defaultValue="ana.silva@example.com"
         invalid
         errorMessage="That address is already registered."
       />
@@ -84,7 +84,7 @@ const CASES: StateCase[] = [
     render: () => (
       <Sample
         label={label}
-        defaultValue="ana.silva@titanium.solutions"
+        defaultValue="ana.silva@example.com"
         showSuccess
         autoValidate
       />
@@ -97,7 +97,7 @@ const CASES: StateCase[] = [
       <Sample
         label={label}
         defaultValue="ana.silva@gmial.com"
-        suggestDomains={["gmail.com", "outlook.com", "titanium.solutions"]}
+        suggestDomains={["gmail.com", "outlook.com", "example.com"]}
         autoValidate
       />
     ),
@@ -105,25 +105,25 @@ const CASES: StateCase[] = [
   {
     name: "Clearable",
     note: "Clear button is 44x44 at size md, meeting WCAG 2.5.5.",
-    render: () => <EmailInput label={label} defaultValue="ana.silva@titanium.solutions" clearable />,
+    render: () => <EmailInput label={label} defaultValue="ana.silva@example.com" clearable />,
   },
   {
     name: "Busy",
     note: "A lookup owned by the parent is in flight.",
-    render: () => <EmailInput label={label} defaultValue="ana.silva@titanium.solutions" busy />,
+    render: () => <EmailInput label={label} defaultValue="ana.silva@example.com" busy />,
   },
   {
     name: "Read only",
     note: "Value is exposed to assistive technology but cannot be edited.",
     render: () => (
-      <EmailInput label={label} defaultValue="ana.silva@titanium.solutions" readOnly />
+      <EmailInput label={label} defaultValue="ana.silva@example.com" readOnly />
     ),
   },
   {
     name: "Disabled",
     note: "Removed from the tab order. Prefer read only where the value still matters.",
     render: () => (
-      <EmailInput label={label} defaultValue="ana.silva@titanium.solutions" disabled />
+      <EmailInput label={label} defaultValue="ana.silva@example.com" disabled />
     ),
   },
   {

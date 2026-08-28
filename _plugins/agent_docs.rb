@@ -12,7 +12,7 @@
 #
 # Runs because the site is built by our own workflow rather than by the legacy
 # GitHub Pages Jekyll build, which ignores _plugins.
-module TitaniumDocs
+module AgentDocs
   MIME_TYPE = "application/llm+markdown"
 
   class AgentBlock < Liquid::Block
@@ -51,7 +51,7 @@ module TitaniumDocs
   end
 end
 
-Liquid::Template.register_tag("agent", TitaniumDocs::AgentBlock)
+Liquid::Template.register_tag("agent", AgentDocs::AgentBlock)
 
 # Incremental rebuilds during `jekyll serve` would otherwise append to the
 # previous run and duplicate every note.
@@ -70,7 +70,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
   index = +"# #{site.config['title']}\n\n"
   index << "> #{site.config['description']}\n\n"
   index << "Every documentation page also carries its agent notes inline, in " \
-           "script elements of type #{TitaniumDocs::MIME_TYPE}.\n\n"
+           "script elements of type #{AgentDocs::MIME_TYPE}.\n\n"
   index << "## Documentation\n\n"
   pages.each do |page|
     summary = page.data["summary"] || page.data["description"]

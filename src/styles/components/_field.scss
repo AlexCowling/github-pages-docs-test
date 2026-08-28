@@ -6,7 +6,7 @@
  * success criterion, so a later edit can see what it would break.
  */
 
-.ti-visually-hidden {
+.ds-visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -18,155 +18,155 @@
   border: 0;
 }
 
-.ti-field {
+.ds-field {
   /* Per-size locals, so the adornment and input cannot drift apart. */
-  --ti-field-height: var(--ti-control-height-md);
-  --ti-field-font-size: var(--ti-font-size-md);
-  --ti-field-padding-inline: var(--ti-space-md);
+  --ds-field-height: var(--ds-control-height-md);
+  --ds-field-font-size: var(--ds-font-size-md);
+  --ds-field-padding-inline: var(--ds-space-md);
 
   display: block;
-  font-family: var(--ti-font-family-sans);
+  font-family: var(--ds-font-family-sans);
   text-align: start;
 
   &[data-size="sm"] {
-    --ti-field-height: var(--ti-control-height-sm);
-    --ti-field-font-size: var(--ti-font-size-sm);
-    --ti-field-padding-inline: var(--ti-space-sm);
+    --ds-field-height: var(--ds-control-height-sm);
+    --ds-field-font-size: var(--ds-font-size-sm);
+    --ds-field-padding-inline: var(--ds-space-sm);
   }
 
   &[data-size="lg"] {
-    --ti-field-height: var(--ti-control-height-lg);
-    --ti-field-font-size: var(--ti-font-size-lg);
-    --ti-field-padding-inline: var(--ti-space-lg);
+    --ds-field-height: var(--ds-control-height-lg);
+    --ds-field-font-size: var(--ds-font-size-lg);
+    --ds-field-padding-inline: var(--ds-space-lg);
   }
 }
 
-.ti-field__label {
+.ds-field__label {
   display: block;
-  color: var(--ti-color-text-primary);
-  font-size: var(--ti-font-size-sm);
-  font-weight: var(--ti-font-weight-semibold);
-  line-height: var(--ti-line-height-normal);
+  color: var(--ds-color-text-primary);
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-semibold);
+  line-height: var(--ds-line-height-normal);
 }
 
-.ti-field__required {
-  margin-inline-start: var(--ti-space-3xs);
-  color: var(--ti-color-danger-text);
+.ds-field__required {
+  margin-inline-start: var(--ds-space-3xs);
+  color: var(--ds-color-danger-text);
 }
 
-.ti-field__optional {
-  margin-inline-start: var(--ti-space-2xs);
-  color: var(--ti-color-text-secondary);
-  font-weight: var(--ti-font-weight-regular);
+.ds-field__optional {
+  margin-inline-start: var(--ds-space-2xs);
+  color: var(--ds-color-text-secondary);
+  font-weight: var(--ds-font-weight-regular);
 }
 
-.ti-field__description {
-  margin: var(--ti-space-2xs) 0 0;
-  color: var(--ti-color-text-secondary);
-  font-size: var(--ti-font-size-sm);
-  line-height: var(--ti-line-height-normal);
+.ds-field__description {
+  margin: var(--ds-space-2xs) 0 0;
+  color: var(--ds-color-text-secondary);
+  font-size: var(--ds-font-size-sm);
+  line-height: var(--ds-line-height-normal);
 }
 
-.ti-field__control {
+.ds-field__control {
   position: relative;
   display: flex;
   align-items: center;
-  margin-block-start: var(--ti-space-2xs);
+  margin-block-start: var(--ds-space-2xs);
 }
 
-.ti-field__input {
+.ds-field__input {
   inline-size: 100%;
-  block-size: var(--ti-field-height);
-  padding-inline: var(--ti-field-padding-inline);
+  block-size: var(--ds-field-height);
+  padding-inline: var(--ds-field-padding-inline);
   /* Space is reserved whether or not an adornment is showing, so the value
      does not shift sideways the moment a state icon appears. */
-  padding-inline-end: var(--ti-field-height);
-  border: var(--ti-border-width-thin) solid var(--ti-color-border-default);
-  border-radius: var(--ti-radius-md);
-  background: var(--ti-color-surface-raised);
-  color: var(--ti-color-text-primary);
+  padding-inline-end: var(--ds-field-height);
+  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface-raised);
+  color: var(--ds-color-text-primary);
   font-family: inherit;
   /* 1rem minimum stops iOS Safari zooming on focus. */
-  font-size: var(--ti-field-font-size);
-  line-height: var(--ti-line-height-normal);
+  font-size: var(--ds-field-font-size);
+  line-height: var(--ds-line-height-normal);
   transition:
-    border-color var(--ti-duration-fast) var(--ti-easing-standard),
-    box-shadow var(--ti-duration-fast) var(--ti-easing-standard);
+    border-color var(--ds-duration-fast) var(--ds-easing-standard),
+    box-shadow var(--ds-duration-fast) var(--ds-easing-standard);
 
   &::placeholder {
-    color: var(--ti-color-text-placeholder);
+    color: var(--ds-color-text-placeholder);
     opacity: 1; /* Firefox dims placeholders by default, which drops contrast. */
   }
 
   &:hover:not(:disabled):not([readonly]) {
-    border-color: var(--ti-color-border-strong);
+    border-color: var(--ds-color-border-strong);
   }
 
   /* WCAG 2.4.13 Focus Appearance: a 3px ring offset from the control gives a
      perimeter well over the 2px minimum, and focus.ring is verified at 3:1
      against both the page and the field by scripts/check-contrast.mjs. */
   &:focus-visible {
-    outline: var(--ti-border-width-thick) solid var(--ti-color-focus-ring);
-    outline-offset: var(--ti-border-width-medium);
-    border-color: var(--ti-color-accent-default);
+    outline: var(--ds-border-width-thick) solid var(--ds-color-focus-ring);
+    outline-offset: var(--ds-border-width-medium);
+    border-color: var(--ds-color-accent-default);
   }
 
   &:disabled {
-    border-color: var(--ti-color-border-disabled);
-    background: var(--ti-color-surface-disabled);
-    color: var(--ti-color-text-disabled);
+    border-color: var(--ds-color-border-disabled);
+    background: var(--ds-color-surface-disabled);
+    color: var(--ds-color-text-disabled);
     cursor: not-allowed;
-    -webkit-text-fill-color: var(--ti-color-text-disabled); /* Safari ignores color when disabled. */
+    -webkit-text-fill-color: var(--ds-color-text-disabled); /* Safari ignores color when disabled. */
     opacity: 1;
   }
 
   &[readonly] {
-    border-color: var(--ti-color-border-subtle);
-    background: var(--ti-color-surface-sunken);
+    border-color: var(--ds-color-border-subtle);
+    background: var(--ds-color-surface-sunken);
   }
 }
 
-.ti-field[data-invalid] .ti-field__input {
-  border-color: var(--ti-color-danger-border);
-  border-width: var(--ti-border-width-medium);
+.ds-field[data-invalid] .ds-field__input {
+  border-color: var(--ds-color-danger-border);
+  border-width: var(--ds-border-width-medium);
 }
 
-.ti-field[data-valid] .ti-field__input {
-  border-color: var(--ti-color-success-border);
-  border-width: var(--ti-border-width-medium);
+.ds-field[data-valid] .ds-field__input {
+  border-color: var(--ds-color-success-border);
+  border-width: var(--ds-border-width-medium);
 }
 
-.ti-field__adornment {
+.ds-field__adornment {
   position: absolute;
   inset-inline-end: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  block-size: var(--ti-field-height);
-  min-inline-size: var(--ti-field-height);
+  block-size: var(--ds-field-height);
+  min-inline-size: var(--ds-field-height);
   pointer-events: none; /* Only the clear button re-enables this. */
 }
 
-.ti-field__icon {
+.ds-field__icon {
   display: block;
   inline-size: 1.25rem;
   block-size: 1.25rem;
-  color: var(--ti-color-text-secondary);
+  color: var(--ds-color-text-secondary);
 }
 
-.ti-field[data-invalid] .ti-field__adornment .ti-field__icon {
-  color: var(--ti-color-danger-text);
+.ds-field[data-invalid] .ds-field__adornment .ds-field__icon {
+  color: var(--ds-color-danger-text);
 }
 
-.ti-field[data-valid] .ti-field__adornment .ti-field__icon {
-  color: var(--ti-color-success-text);
+.ds-field[data-valid] .ds-field__adornment .ds-field__icon {
+  color: var(--ds-color-success-text);
 }
 
-.ti-field__icon--busy {
-  animation: ti-field-spin 900ms linear infinite;
+.ds-field__icon--busy {
+  animation: ds-field-spin 900ms linear infinite;
 }
 
-@keyframes ti-field-spin {
+@keyframes ds-field-spin {
   to {
     transform: rotate(360deg);
   }
@@ -175,43 +175,43 @@
 /* Sized to the full control height, so at the md and lg sizes the hit area
    clears the 44x44 of WCAG 2.5.5 Target Size (Enhanced). At sm it is 32x32,
    which clears 2.5.8 Target Size (Minimum) but not 2.5.5. */
-.ti-field__clear {
+.ds-field__clear {
   display: flex;
   align-items: center;
   justify-content: center;
-  inline-size: var(--ti-field-height);
-  block-size: var(--ti-field-height);
+  inline-size: var(--ds-field-height);
+  block-size: var(--ds-field-height);
   padding: 0;
   border: 0;
-  border-radius: var(--ti-radius-md);
+  border-radius: var(--ds-radius-md);
   background: none;
-  color: var(--ti-color-text-secondary);
+  color: var(--ds-color-text-secondary);
   cursor: pointer;
   pointer-events: auto;
 
   &:hover {
-    color: var(--ti-color-text-primary);
+    color: var(--ds-color-text-primary);
   }
 
   &:focus-visible {
-    outline: var(--ti-border-width-thick) solid var(--ti-color-focus-ring);
-    outline-offset: calc(var(--ti-border-width-medium) * -1);
+    outline: var(--ds-border-width-thick) solid var(--ds-color-focus-ring);
+    outline-offset: calc(var(--ds-border-width-medium) * -1);
   }
 }
 
-.ti-field__messages {
+.ds-field__messages {
   display: block;
 }
 
-.ti-field__message {
+.ds-field__message {
   display: flex;
-  gap: var(--ti-space-2xs);
+  gap: var(--ds-space-2xs);
   align-items: flex-start;
-  margin: var(--ti-space-2xs) 0 0;
-  font-size: var(--ti-font-size-sm);
-  line-height: var(--ti-line-height-normal);
+  margin: var(--ds-space-2xs) 0 0;
+  font-size: var(--ds-font-size-sm);
+  line-height: var(--ds-line-height-normal);
 
-  .ti-field__icon {
+  .ds-field__icon {
     flex: none;
     /* Optically centres the glyph on the first line of text. */
     margin-block-start: 0.0625rem;
@@ -219,39 +219,39 @@
   }
 }
 
-.ti-field__message--error {
-  color: var(--ti-color-danger-text);
-  font-weight: var(--ti-font-weight-medium);
+.ds-field__message--error {
+  color: var(--ds-color-danger-text);
+  font-weight: var(--ds-font-weight-medium);
 }
 
-.ti-field__message--success {
-  color: var(--ti-color-success-text);
+.ds-field__message--success {
+  color: var(--ds-color-success-text);
 }
 
-.ti-field__message--suggestion {
+.ds-field__message--suggestion {
   display: block;
-  color: var(--ti-color-text-secondary);
+  color: var(--ds-color-text-secondary);
 }
 
-.ti-field__suggestion {
+.ds-field__suggestion {
   padding: 0;
   border: 0;
   background: none;
-  color: var(--ti-color-accent-default);
+  color: var(--ds-color-accent-default);
   font: inherit;
-  font-weight: var(--ti-font-weight-semibold);
+  font-weight: var(--ds-font-weight-semibold);
   text-decoration: underline;
   text-underline-offset: 0.15em;
   cursor: pointer;
 
   &:hover {
-    color: var(--ti-color-accent-hover);
+    color: var(--ds-color-accent-hover);
   }
 
   &:focus-visible {
-    outline: var(--ti-border-width-thick) solid var(--ti-color-focus-ring);
-    outline-offset: var(--ti-border-width-medium);
-    border-radius: var(--ti-radius-sm);
+    outline: var(--ds-border-width-thick) solid var(--ds-color-focus-ring);
+    outline-offset: var(--ds-border-width-medium);
+    border-radius: var(--ds-radius-sm);
   }
 }
 
@@ -259,32 +259,32 @@
    colours. Borders and rings are restated in system keywords so the field
    keeps its shape, and the state icons keep their own colour mapping. */
 @media (forced-colors: active) {
-  .ti-field__input {
+  .ds-field__input {
     border-color: ButtonBorder;
   }
 
-  .ti-field__input:focus-visible,
-  .ti-field__clear:focus-visible,
-  .ti-field__suggestion:focus-visible {
+  .ds-field__input:focus-visible,
+  .ds-field__clear:focus-visible,
+  .ds-field__suggestion:focus-visible {
     outline-color: Highlight;
   }
 
-  .ti-field__input:disabled {
+  .ds-field__input:disabled {
     border-color: GrayText;
     color: GrayText;
   }
 
-  .ti-field[data-invalid] .ti-field__input {
+  .ds-field[data-invalid] .ds-field__input {
     border-color: Mark;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ti-field__input {
+  .ds-field__input {
     transition: none;
   }
 
-  .ti-field__icon--busy {
+  .ds-field__icon--busy {
     animation-duration: 3s;
   }
 }

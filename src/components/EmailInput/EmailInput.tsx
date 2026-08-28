@@ -189,7 +189,7 @@ export const EmailInput = forwardRef<EmailInputHandle, EmailInputProps>(function
 
   return (
     <div
-      className={["ti-field", className].filter(Boolean).join(" ")}
+      className={["ds-field", className].filter(Boolean).join(" ")}
       data-size={size}
       data-invalid={isInvalid || undefined}
       data-valid={isSuccessful || undefined}
@@ -198,27 +198,27 @@ export const EmailInput = forwardRef<EmailInputHandle, EmailInputProps>(function
       data-busy={showBusy || undefined}
     >
       <label
-        className={hideLabel ? "ti-field__label ti-visually-hidden" : "ti-field__label"}
+        className={hideLabel ? "ds-field__label ds-visually-hidden" : "ds-field__label"}
         htmlFor={inputId}
       >
         {label}
         {required && requiredIndicator ? (
-          <span className="ti-field__required" aria-hidden="true">
+          <span className="ds-field__required" aria-hidden="true">
             {requiredIndicator}
           </span>
         ) : null}
         {!required && optionalIndicator ? (
-          <span className="ti-field__optional">{optionalIndicator}</span>
+          <span className="ds-field__optional">{optionalIndicator}</span>
         ) : null}
       </label>
 
       {description ? (
-        <p className="ti-field__description" id={descriptionId}>
+        <p className="ds-field__description" id={descriptionId}>
           {description}
         </p>
       ) : null}
 
-      <div className="ti-field__control">
+      <div className="ds-field__control">
         <input
           {...rest}
           ref={inputRef}
@@ -229,7 +229,7 @@ export const EmailInput = forwardRef<EmailInputHandle, EmailInputProps>(function
           spellCheck={false}
           autoCapitalize="none"
           autoCorrect="off"
-          className="ti-field__input"
+          className="ds-field__input"
           value={value}
           required={required}
           aria-invalid={isInvalid || undefined}
@@ -242,14 +242,14 @@ export const EmailInput = forwardRef<EmailInputHandle, EmailInputProps>(function
           onBlur={handleBlur}
         />
 
-        <span className="ti-field__adornment">
+        <span className="ds-field__adornment">
           {showBusy ? <BusyIcon /> : null}
           {!showBusy && isInvalid ? <ErrorIcon /> : null}
           {!showBusy && isSuccessful ? <SuccessIcon /> : null}
           {clearable && value.length > 0 && !rest.disabled && !rest.readOnly ? (
             <button
               type="button"
-              className="ti-field__clear"
+              className="ds-field__clear"
               onClick={clear}
               aria-label={clearLabel}
             >
@@ -264,18 +264,18 @@ export const EmailInput = forwardRef<EmailInputHandle, EmailInputProps>(function
         region before a message arrives. Polite rather than assertive:
         validation fires on blur, where an interruption is disorienting.
       */}
-      <div className="ti-field__messages" id={messagesId} aria-live="polite" aria-atomic="true">
+      <div className="ds-field__messages" id={messagesId} aria-live="polite" aria-atomic="true">
         {errorText ? (
-          <p className="ti-field__message ti-field__message--error">
+          <p className="ds-field__message ds-field__message--error">
             <ErrorIcon />
             <span>{errorText}</span>
           </p>
         ) : null}
 
         {suggestion ? (
-          <p className="ti-field__message ti-field__message--suggestion">
+          <p className="ds-field__message ds-field__message--suggestion">
             <span>Did you mean </span>
-            <button type="button" className="ti-field__suggestion" onClick={acceptSuggestion}>
+            <button type="button" className="ds-field__suggestion" onClick={acceptSuggestion}>
               {suggestion}
             </button>
             <span>?</span>
@@ -283,7 +283,7 @@ export const EmailInput = forwardRef<EmailInputHandle, EmailInputProps>(function
         ) : null}
 
         {isSuccessful && successMessage ? (
-          <p className="ti-field__message ti-field__message--success">
+          <p className="ds-field__message ds-field__message--success">
             <SuccessIcon />
             <span>{successMessage}</span>
           </p>

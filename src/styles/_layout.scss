@@ -1,26 +1,26 @@
 .skip-link {
   position: absolute;
-  inset-inline-start: var(--ti-space-lg);
-  inset-block-start: var(--ti-space-lg);
+  inset-inline-start: var(--ds-space-lg);
+  inset-block-start: var(--ds-space-lg);
   z-index: 10;
-  padding: var(--ti-space-sm) var(--ti-space-lg);
-  border-radius: var(--ti-radius-md);
-  background: var(--ti-color-surface-raised);
-  color: var(--ti-color-accent-default);
-  font-weight: var(--ti-font-weight-semibold);
+  padding: var(--ds-space-sm) var(--ds-space-lg);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface-raised);
+  color: var(--ds-color-accent-default);
+  font-weight: var(--ds-font-weight-semibold);
   text-decoration: none;
   transform: translateY(-200%);
 
   &:focus-visible {
-    outline: var(--ti-border-width-thick) solid var(--ti-color-focus-ring);
-    outline-offset: var(--ti-border-width-medium);
+    outline: var(--ds-border-width-thick) solid var(--ds-color-focus-ring);
+    outline-offset: var(--ds-border-width-medium);
     transform: none;
   }
 }
 
 .site-header {
-  border-block-end: var(--ti-border-width-thin) solid var(--ti-color-border-subtle);
-  background: var(--ti-color-surface-raised);
+  border-block-end: var(--ds-border-width-thin) solid var(--ds-color-border-subtle);
+  background: var(--ds-color-surface-raised);
 }
 
 .site-header__inner,
@@ -28,48 +28,48 @@
 .site-footer__inner {
   max-inline-size: 54rem;
   margin-inline: auto;
-  padding-inline: var(--ti-space-lg);
+  padding-inline: var(--ds-space-lg);
 }
 
 .site-header__inner {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ti-space-md) var(--ti-space-xl);
+  gap: var(--ds-space-md) var(--ds-space-xl);
   align-items: baseline;
-  padding-block: var(--ti-space-lg);
+  padding-block: var(--ds-space-lg);
 }
 
 .site-header__title {
-  color: var(--ti-color-text-primary);
-  font-size: var(--ti-font-size-lg);
-  font-weight: var(--ti-font-weight-semibold);
+  color: var(--ds-color-text-primary);
+  font-size: var(--ds-font-size-lg);
+  font-weight: var(--ds-font-weight-semibold);
   text-decoration: none;
 }
 
 .site-nav {
   display: flex;
-  gap: var(--ti-space-lg);
-  font-size: var(--ti-font-size-sm);
+  gap: var(--ds-space-lg);
+  font-size: var(--ds-font-size-sm);
 }
 
 .site-nav__link[aria-current="page"] {
-  color: var(--ti-color-text-primary);
-  font-weight: var(--ti-font-weight-semibold);
+  color: var(--ds-color-text-primary);
+  font-weight: var(--ds-font-weight-semibold);
   text-decoration: none;
 }
 
 .site-main {
-  padding-block: var(--ti-space-3xl);
+  padding-block: var(--ds-space-3xl);
 }
 
 .site-footer {
-  border-block-start: var(--ti-border-width-thin) solid var(--ti-color-border-subtle);
-  color: var(--ti-color-text-secondary);
-  font-size: var(--ti-font-size-sm);
+  border-block-start: var(--ds-border-width-thin) solid var(--ds-color-border-subtle);
+  color: var(--ds-color-text-secondary);
+  font-size: var(--ds-font-size-sm);
 }
 
 .site-footer__inner {
-  padding-block: var(--ti-space-xl);
+  padding-block: var(--ds-space-xl);
 
   > :last-child {
     margin-block-end: 0;
@@ -78,28 +78,28 @@
 
 .theme-toggle {
   margin-inline-start: auto;
-  min-block-size: var(--ti-control-height-sm);
-  padding: var(--ti-space-2xs) var(--ti-space-md);
-  border: var(--ti-border-width-thin) solid var(--ti-color-border-default);
-  border-radius: var(--ti-radius-md);
-  background: var(--ti-color-surface-raised);
-  color: var(--ti-color-text-primary);
+  min-block-size: var(--ds-control-height-sm);
+  padding: var(--ds-space-2xs) var(--ds-space-md);
+  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface-raised);
+  color: var(--ds-color-text-primary);
   font: inherit;
-  font-size: var(--ti-font-size-sm);
+  font-size: var(--ds-font-size-sm);
   cursor: pointer;
 
   &:hover {
-    border-color: var(--ti-color-border-strong);
+    border-color: var(--ds-color-border-strong);
   }
 
   &:focus-visible {
-    outline: var(--ti-border-width-thick) solid var(--ti-color-focus-ring);
-    outline-offset: var(--ti-border-width-medium);
+    outline: var(--ds-border-width-thick) solid var(--ds-color-focus-ring);
+    outline-offset: var(--ds-border-width-medium);
   }
 }
 
 .lede {
-  color: var(--ti-color-text-secondary);
-  font-size: var(--ti-font-size-lg);
-  line-height: var(--ti-line-height-relaxed);
+  color: var(--ds-color-text-secondary);
+  font-size: var(--ds-font-size-lg);
+  line-height: var(--ds-line-height-relaxed);
 }

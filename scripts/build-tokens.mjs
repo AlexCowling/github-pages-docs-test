@@ -14,7 +14,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { loadTokens } from "./bundle-ts.mjs";
 
-const PREFIX = "ti";
+const PREFIX = "ds";
 
 const flatten = (value, prefix = []) =>
   typeof value === "string"
@@ -75,9 +75,9 @@ const json = JSON.stringify(
     $schema: "https://alexcowling.github.io/github-pages-docs-test/assets/tokens/schema.json",
     prefix: PREFIX,
     description:
-      "Design tokens for the Titanium component library. Primitives are raw values; " +
+      "Design tokens for the component library. Primitives are raw values; " +
       "semantic tokens are the supported surface and are exposed as CSS custom properties " +
-      "named --ti-color-<path>. Dimension tokens are theme-independent.",
+      "named --ds-color-<path>. Dimension tokens are theme-independent.",
     primitives: { palette, scale },
     dimensions: Object.fromEntries(dimensions),
     themes: {

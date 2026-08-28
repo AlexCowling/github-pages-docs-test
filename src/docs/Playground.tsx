@@ -34,8 +34,8 @@ const INITIAL: DemoState = {
   forceInvalid: false,
 };
 
-const SUGGEST_DOMAINS = ["gmail.com", "outlook.com", "titanium.solutions"];
-const ALLOWED_DOMAINS = ["titanium.solutions"];
+const SUGGEST_DOMAINS = ["gmail.com", "outlook.com", "example.com"];
+const ALLOWED_DOMAINS = ["example.com"];
 
 const TOGGLES: { key: keyof DemoState; label: string; hint: string }[] = [
   { key: "required", label: "required", hint: "rules.required" },
@@ -46,7 +46,7 @@ const TOGGLES: { key: keyof DemoState; label: string; hint: string }[] = [
   { key: "busy", label: "busy", hint: "parent-owned pending state" },
   { key: "hideLabel", label: "hideLabel", hint: "label stays in the a11y tree" },
   { key: "withDescription", label: "description", hint: "helper text" },
-  { key: "restrictDomain", label: "allowedDomains", hint: "titanium.solutions only" },
+  { key: "restrictDomain", label: "allowedDomains", hint: "example.com only" },
   { key: "suggestTypos", label: "suggestDomains", hint: "typo correction" },
   { key: "forceInvalid", label: "invalid", hint: "override from a form library" },
 ];
