@@ -81,6 +81,10 @@ function snippetFor(state: DemoState): string {
 
 export function Playground() {
   const [state, setState] = useState<DemoState>(INITIAL);
+  // Bumped by Reset and used as the field key, so the field is remounted rather
+  // than merely re-rendered. Resetting the props alone would leave the internal
+  // validation state behind, which is not what Reset reads as.
+  const [instance, setInstance] = useState(0);
   const [copied, setCopied] = useState(false);
   const fieldRef = useRef<EmailInputHandle>(null);
   const legendId = useId();
@@ -101,33 +105,38 @@ export function Playground() {
 
   return (
     <div className="demo">
-      <div className="demo__stage">
-        <EmailInput
-          ref={fieldRef}
-          label="Work email address"
-          hideLabel={state.hideLabel}
-          description={
-            state.withDescription ? "We use this for account recovery only." : undefined
-          }
-          size={state.size}
-          validateOn={state.validateOn}
-          rules={{
-            required: state.required,
-            allowedDomains: state.restrictDomain ? ALLOWED_DOMAINS : undefined,
-          }}
-          suggestDomains={state.suggestTypos ? SUGGEST_DOMAINS : undefined}
-          clearable={state.clearable}
-          showSuccess={state.showSuccess}
-          busy={state.busy}
-          disabled={state.disabled}
-          readOnly={state.readOnly}
-          invalid={state.forceInvalid || undefined}
-          errorMessage={state.forceInvalid ? "That address is already registered." : undefined}
-          placeholder="name@example.com"
-        />
+      <div className="demo__preview">
+        <div className="demo__stage">
+          <EmailInput
+            key={instance}
+            ref={fieldRef}
+            label="Work email address"
+            hideLabel={state.hideLabel}
+            description={
+              state.withDescription ? "We use this for account recovery only." : undefined
+            }
+            size={state.size}
+            validateOn={state.validateOn}
+            rules={{
+              required: state.required,
+              allowedDomains: state.restrictDomain ? ALLOWED_DOMAINS : undefined,
+            }}
+            suggestDomains={state.suggestTypos ? SUGGEST_DOMAINS : undefined}
+            clearable={state.clearable}
+            showSuccess={state.showSuccess}
+            busy={state.busy}
+            disabled={state.disabled}
+            readOnly={state.readOnly}
+            invalid={state.forceInvalid || undefined}
+            errorMessage={state.forceInvalid ? "That address is already registered." : undefined}
+            placeholder="name@example.com"
+          />
+        </div>
+
         <p className="demo__hint">
           Type an address and move focus away to see validation. Try{" "}
-          <code>name@gmial.com</code> for the typo suggestion.
+          <code>name@gmial.com</code> for the typo suggestion. Nothing in this paragraph is
+          part of the component.
         </p>
       </div>
 
@@ -203,7 +212,14 @@ export function Playground() {
             >
               ref.clear()
             </button>
-            <button type="button" className="demo__button" onClick={() => setState(INITIAL)}>
+            <button
+              type="button"
+              className="demo__button"
+              onClick={() => {
+                setState(INITIAL);
+                setInstance((count) => count + 1);
+              }}
+            >
               Reset
             </button>
           </div>

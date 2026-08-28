@@ -15,6 +15,10 @@
   }
 }
 
+.demo__preview {
+  min-inline-size: 0;
+}
+
 .demo__stage {
   padding: var(--ds-space-lg);
   border-radius: var(--ds-radius-md);

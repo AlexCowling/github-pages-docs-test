@@ -96,3 +96,23 @@ test("does not suggest when the domain is already known or is far away", () => {
   assert.equal(suggestEmailDomain("ana@example.com", ["gmail.com"]), null);
   assert.equal(suggestEmailDomain("no-at-sign", ["gmail.com"]), null);
 });
+
+test("an explicit undefined rule falls back to the default", () => {
+  // The shape produced by every conditional prop: allowedDomains={on ? list : undefined}.
+  // A plain spread would overwrite the default empty array and throw on .map.
+  const result = validateEmail("ana@anywhere.test", {
+    required: true,
+    allowedDomains: undefined,
+    blockedDomains: undefined,
+  });
+  assert.equal(result.valid, true);
+  assert.equal(result.code, null);
+});
+
+test("turning an allow list off stops it being enforced", () => {
+  const on = validateEmail("ana@elsewhere.test", { allowedDomains: ["example.com"] });
+  assert.equal(on.code, "domainNotAllowed");
+
+  const off = validateEmail("ana@elsewhere.test", { allowedDomains: undefined });
+  assert.equal(off.valid, true);
+});

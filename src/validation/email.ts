@@ -106,12 +106,28 @@ const resolve = (
   return typeof template === "function" ? template(context) : template;
 };
 
+/**
+ * Merges over the defaults treating an explicit `undefined` as "not specified".
+ * A plain spread would let `{ allowedDomains: undefined }` overwrite the default
+ * empty array, which is the shape produced by every conditional prop of the form
+ * `allowedDomains={enabled ? list : undefined}`.
+ */
+function resolveRules(rules: EmailValidationRules): Required<EmailValidationRules> {
+  const resolved = { ...DEFAULT_RULES };
+  for (const [key, value] of Object.entries(rules)) {
+    if (value !== undefined) {
+      (resolved as Record<string, unknown>)[key] = value;
+    }
+  }
+  return resolved;
+}
+
 export function validateEmail(
   input: string,
   rules: EmailValidationRules = {},
   messages: EmailMessages = {},
 ): EmailValidationResult {
-  const resolved = { ...DEFAULT_RULES, ...rules };
+  const resolved = resolveRules(rules);
   const value = resolved.normalise ? input.trim().toLowerCase() : input;
   const context: EmailMessageContext = { value, rules: resolved };
 

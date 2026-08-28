@@ -1,6 +1,7 @@
 import {
   forwardRef,
   useCallback,
+  useEffect,
   useId,
   useImperativeHandle,
   useMemo,
@@ -157,6 +158,29 @@ export const EmailInput = forwardRef<EmailInputHandle, EmailInputProps>(function
     }),
     [clear, runValidation, value],
   );
+
+  // A displayed error must never describe rules that no longer apply. Rules are
+  // usually passed as an object literal, so identity churns every render and
+  // cannot be the trigger; the comparison is on value.
+  const rulesKey = useMemo(
+    () => JSON.stringify(rules ?? {}, (_, entry) => (entry instanceof RegExp ? entry.source : entry)),
+    [rules],
+  );
+  const previousRulesKey = useRef(rulesKey);
+  const latest = useRef({ value, touched, runValidation });
+
+  // Written after commit rather than during render, so a render React discards
+  // under concurrent rendering cannot leave a stale value behind. Declared
+  // before the effect that reads it, because effects run in declaration order.
+  useEffect(() => {
+    latest.current = { value, touched, runValidation };
+  });
+
+  useEffect(() => {
+    if (previousRulesKey.current === rulesKey) return;
+    previousRulesKey.current = rulesKey;
+    if (latest.current.touched) latest.current.runValidation(latest.current.value);
+  }, [rulesKey]);
 
   const internalInvalid = (touched && result !== null && !result.valid) || asyncMessage !== null;
   const isInvalid =
