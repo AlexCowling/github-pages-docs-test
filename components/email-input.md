@@ -16,7 +16,7 @@ server.
 import { EmailInput } from "@ds/ui";
 
 <EmailInput
-  label="Work email address"
+  label="Email address"
   description="We use this for account recovery only."
   rules={{ required: true }}
   onValueChange={setEmail}
@@ -205,7 +205,7 @@ Handing validation to a form library:
 
 ```tsx
 <EmailInput
-  label="Work email address"
+  label="Email address"
   validateOn="manual"
   value={field.value}
   onValueChange={field.onChange}
@@ -219,7 +219,7 @@ Checking an address against a service, without a request per keystroke:
 {% raw %}
 ```tsx
 <EmailInput
-  label="Work email address"
+  label="Email address"
   rules={{ required: true }}
   asyncValidate={async (value) => {
     const response = await fetch(`/api/email/available?value=${encodeURIComponent(value)}`);

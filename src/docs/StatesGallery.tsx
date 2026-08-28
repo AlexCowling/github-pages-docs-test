@@ -24,7 +24,7 @@ interface StateCase {
   render: () => ReactElement;
 }
 
-const label = "Work email address";
+const label = "Email address";
 
 const CASES: StateCase[] = [
   {
@@ -140,7 +140,7 @@ const CASES: StateCase[] = [
 
 export function StatesGallery() {
   return (
-    <ul className="states">
+    <ul className="states" data-testid="states">
       {CASES.map((item) => (
         <li className="states__item" key={item.name}>
           <h3 className="states__name">{item.name}</h3>

@@ -33,7 +33,7 @@ import { EmailInput } from "@ds/ui";
 import "@ds/ui/styles.css";
 
 <EmailInput
-  label="Work email address"
+  label="Email address"
   rules={{ required: true }}
   onValueChange={setEmail}
 />;
@@ -85,11 +85,13 @@ Claims in these pages are checked by scripts in the repository rather than asser
 | Claim | Checked by | Result |
 | --- | --- | --- |
 | Colour pairs meet their WCAG ratio | `npm run check:contrast` | 36 pairs, both themes |
-| Validation rules behave as documented | `npm test` | 14 tests |
+| Validation rules behave as documented | `npm test` | 16 tests |
 | Types are sound | `npm run typecheck` | no errors |
+| The component behaves in a browser | `npm run test:e2e` | 12 Playwright tests |
 
-All three run in CI before the site is built, so a token edit that breaks contrast fails
-the deploy.
+The first three run in CI before the site is built and the fourth runs after it, against
+the built output, so a token edit that breaks contrast or an island that fails to mount
+blocks the deploy.
 
 {% agent repository-layout %}
 Repository layout, for an agent asked to change something here:
@@ -107,6 +109,10 @@ Repository layout, for an agent asked to change something here:
 - src/styles/components/_field.scss - component styling. Token references only; no
   literal colour, spacing or font values.
 - src/docs/ - documentation-only React. Never ships in the library.
+- e2e/ - Playwright smoke tests. They run against the built _site through
+  scripts/serve-site.mjs, not a dev server, and need `npx playwright install chromium`
+  once. Two of them pin defects found by hand: stale validation after a rules change,
+  and Reset not clearing field state.
 - _plugins/agent_docs.rb - the {% raw %}{% agent %}{% endraw %} tag and the llms.txt writer.
 
 Build order matters: tokens, then CSS, then JS, then Jekyll. `npm run build` does the

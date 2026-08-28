@@ -43,11 +43,15 @@ Nothing about accessibility is asserted in prose without a script behind it.
 | Command | Checks |
 | --- | --- |
 | `npm run check:contrast` | 36 colour pairs against the WCAG ratio each one needs, both themes |
-| `npm test` | 14 tests over the validation rules |
+| `npm test` | 16 tests over the validation rules |
 | `npm run typecheck` | Types, including that both themes define every semantic token |
-| `npm run verify` | All three, and what CI runs before building |
+| `npm run test:e2e` | 12 Playwright tests over the built site: island mounting, ARIA wiring, and two pinned regressions |
+| `npm run verify` | Typecheck, unit tests and contrast together; what CI runs before building |
 
-A token edit that drops a pair below its ratio fails the deploy rather than shipping.
+A token edit that drops a pair below its ratio fails the deploy rather than shipping. The
+e2e suite runs in CI against the built `_site`, after Jekyll and before the upload, so a
+broken island blocks the deploy too. It needs a browser locally:
+`npx playwright install chromium`.
 
 ## Local development
 

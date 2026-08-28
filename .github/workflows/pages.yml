@@ -43,6 +43,22 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      # Runs against the built _site, so a broken island or a regression in the
+      # runtime behaviour blocks the deploy rather than reaching the live page.
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end smoke tests
+        run: npm run test:e2e
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
       - uses: actions/upload-pages-artifact@v3
 
   deploy:

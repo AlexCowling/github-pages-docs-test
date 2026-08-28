@@ -11,9 +11,10 @@
     "dev": "npm run build:tokens && concurrently -n css,js -c magenta,yellow \"npm:dev:css\" \"npm:dev:js\"",
     "dev:css": "sass src/styles/main.scss assets/css/main.css --watch",
     "dev:js": "esbuild src/main.tsx --bundle --sourcemap --target=es2020 --format=iife --outfile=assets/js/bundle.js --watch",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
     "test": "node --test scripts/*.test.mjs",
     "check:contrast": "node scripts/check-contrast.mjs",
+    "test:e2e": "playwright test",
     "verify": "npm run typecheck && npm test && npm run check:contrast",
     "serve": "bundle exec jekyll serve --livereload"
   },
@@ -22,10 +23,12 @@
     "react-dom": ">=18"
   },
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "concurrently": "^9.1.0",

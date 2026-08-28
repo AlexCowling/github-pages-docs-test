@@ -53,7 +53,7 @@ const TOGGLES: { key: keyof DemoState; label: string; hint: string }[] = [
 
 function snippetFor(state: DemoState): string {
   const lines: string[] = ["<EmailInput"];
-  lines.push('  label="Work email address"');
+  lines.push('  label="Email address"');
   if (state.hideLabel) lines.push("  hideLabel");
   if (state.withDescription) lines.push('  description="We use this for account recovery only."');
   if (state.size !== "md") lines.push(`  size="${state.size}"`);
@@ -104,13 +104,13 @@ export function Playground() {
   };
 
   return (
-    <div className="demo">
+    <div className="demo" data-testid="playground">
       <div className="demo__preview">
         <div className="demo__stage">
           <EmailInput
             key={instance}
             ref={fieldRef}
-            label="Work email address"
+            label="Email address"
             hideLabel={state.hideLabel}
             description={
               state.withDescription ? "We use this for account recovery only." : undefined
